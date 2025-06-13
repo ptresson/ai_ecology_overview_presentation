@@ -1,0 +1,260 @@
+\documentclass{irdbeamer}
+\usepackage{tikz}
+\usepackage{marvosym}
+
+\title{Artificial Intelligence in Ecology and Evolution : \\ potential and limits}
+\subtitle{E2M2 webinar}
+\author[Paul Tresson]{Paul Tresson}
+\date{26/06/25} % or whatever the date you are presenting in is
+% \institute[Institut de Recherche pour le Développement]{UMR AMAP}
+
+%\copyrightnotice{Published by Institut de Recherche pour le Développement, with permission}
+
+% %% to add a background image for the title slide, uncomment here
+% \usebackgroundtemplate{
+%   \tikz[overlay, remember picture] \node[at=(current page.center)] {
+%     \includegraphics[width=\paperwidth,height=\paperheight]{example-image-a}
+%   };
+% }
+
+\usepackage[
+    backend=biber,
+    style=authoryear-comp,
+    maxcitenames=2, % max 2 authors before switching to et al.
+    maxbibnames=4,
+    uniquelist=false, % stays et al. when almost the same authors
+    uniquename=false, % dose not bother when first name not written the same way everywhere
+    date=year, % month does not appear in bibliography
+    natbib=true, % use natbib synthax
+    url=false, % remove url
+    eprint=false % remove eprint
+]{biblatex}
+
+\addbibresource{refs.bib}
+
+\let\oldcite=\cite                                                              
+\renewcommand{\cite}[1]{\textcolor[rgb]{.5,.5,.7}{\oldcite{#1}}}
+\let\oldcitep=\citep                                                              
+\renewcommand{\citep}[1]{\textcolor[rgb]{.5,.5,.7}{\oldcitep{#1}}}
+
+\begin{document}
+
+\addlogo{logos/IRD_banner.png}
+\addlogo{logos/AMAP_banner.png}
+\addlogo{logos/E2M2.jpeg}
+\maketitle
+
+\usebackgroundtemplate{}
+\cutoc{}
+
+
+\section{Why use deep learning in ecology ?}
+
+
+\begin{frame}{More and more data}
+\begin{columns}
+    \column{0.5\linewidth}
+    \begin{figure}
+        \centering
+        \includegraphics<1>[width=\linewidth]{figs/sentinel}
+        \includegraphics<2>[width=\linewidth]{figs/spectrogramm}
+        \includegraphics<3>[width=\linewidth]{figs/plantnet.jpg}
+    \end{figure}
+    % \only<1>{\nonumbernote{ }}
+    \only<2>{\nonumbernote{Mac Aodha \textit{et al.} 2022}}
+    \only<3>{\nonumbernote{\url{plantnet.org}}}
+    \column{0.5\linewidth}
+\begin{itemize}
+    \item<1-> UAVs, Satellite
+    \item<2-> Camera trap, accoustic
+    \item<3-> Citizen science
+    \item[\large\MVRightarrow{}]<4-> \textbf{Better coverage, better monitoring}
+\end{itemize}
+    
+\end{columns}
+\end{frame}
+
+\begin{frame}{Data analysis and interpretation is time consuming}
+\begin{columns}
+    \column{0.5\linewidth}
+\begin{itemize}
+    \item<1-> A computer does not sleep
+    \item<1-> A computer does not get tired
+    \item[\large\MVRightarrow{}]<2-> \textbf{Automation now possible}
+\end{itemize}
+    \column{0.5\linewidth}
+    \begin{figure}
+        \centering
+        \includegraphics<1>[width=0.8\linewidth]{figs/grieshop_et_al.png}
+        \includegraphics<2>[width=0.5\linewidth]{./figs/xkcd_photo_is_a_bird.png}
+        \only<1>{\caption{Grieshop \textit{et al.} 2012}}
+        \only<2>{\caption{xkcd 1425, 2014}}
+    \end{figure}
+    
+\end{columns}
+    
+\end{frame}
+
+\section{What are the cases where deep learning does work ? \\ \small{and other models don't}}
+
+\begin{frame}{Model complex, non-linear and abstract relationships}
+\begin{columns}
+    \column{0.33\linewidth}
+    \begin{figure}
+        \centering
+        \includegraphics[width=\linewidth]{figs/chatgpt_haiku.png}
+    \end{figure}
+    \column{0.33\linewidth}
+    \begin{figure}
+        \centering
+        \includegraphics[width=\linewidth]{figs/uav_stable_diffusion.png}
+    \end{figure}
+    \column{0.33\linewidth}
+    \begin{figure}
+        \centering
+        \includegraphics[width=\linewidth]{figs/alphago.jpg}
+    \end{figure}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Interpolation and generalisation}
+    \begin{figure}
+        \centering
+        \includegraphics[width=0.5\linewidth]{figs/plantclef2020.png}
+        \caption{PlantClef 2020 Dataset}
+    \end{figure}
+\end{frame}
+
+\section{What are the cases where deep learning doesn't work ?\\
+\small{Common traps when working with living things}}
+
+\begin{frame}[t]{Contraints in ecology}
+    \only<1->{Data from the real world is noisy,}%
+    \only<2->{ unbalanced,}%
+    \only<3->{ hard to collect,}%
+    \only<4->{ hard to interpret.}%
+
+            \centering
+    \includegraphics<1>[width=.8\textwidth]{./figs/bouamir.png}%
+    \includegraphics<2>[width=.7\textwidth]{./figs/plantnet_longtail.png}%
+    % \only<2>{\tiny \\Distribution of species represented in plantnet dataset}
+    \includegraphics<3>[width=.3\textwidth]{./figs/climbing.png}%
+    \includegraphics<4>[width=.3\textwidth]{./figs/recapcha.png}%
+    \includegraphics<5>[width=.3\textwidth]{./figs/recapcha_plantnet.png}%
+    \includegraphics<6>[width=.3\textwidth]{./figs/recapcha_pheidole.png}%
+\end{frame}
+
+
+\begin{frame}{}
+    \centering
+    \includegraphics<1>[width=.5\textwidth]{./figs/schemas/train.png}%
+    \includegraphics<2>[width=.5\textwidth]{./figs/schemas/good_fit.png}%
+    \includegraphics<3>[width=.5\textwidth]{./figs/schemas/good_fit_test.png}%
+    \includegraphics<4>[width=.5\textwidth]{./figs/schemas/bad_fit.png}%
+
+    \only<1>{Train set}%
+    \only<2>{\small A good fitted model}%
+    \only<3>{Test set}%
+    \only<4>{\footnotesize An overfitted model}%
+\end{frame}
+
+
+\begin{frame}{Out of distribution : Evolution with time}
+\begin{columns}
+    \column{.5\linewidth}
+\begin{figure}
+    \centering
+    \includegraphics<1->[width=\linewidth]{figs/vela_et_al_frise.png}
+\end{figure}
+    \column{.5\linewidth}
+\begin{figure}
+    \centering
+    \includegraphics<2>[width=\linewidth]{figs/vela_et_al_graph.png}
+\end{figure}
+\end{columns}
+\nonumbernote{\tiny{Adapted from Vela \textit{et al.} 2022}}
+\end{frame}
+
+\begin{frame}{Out of distribution : Global changes}
+
+Conditions will evolve in never seen before conditions:
+\begin{itemize}
+    \item<1-> Given ecosystem in unprecedented climatic conditions
+    \item<2-> Species migrate/invade in new territories
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Out of distribution : Invasive species}
+
+New unknown species in the training test appears in a region.
+
+\begin{itemize}
+    \item<1-> False Positive : confusion with known species
+    \item<2-> False Negative : model misses the new species
+    \item<3-> Handmade check on model confidence
+\end{itemize}
+    
+\end{frame}
+
+\section{How will it evolve ?}
+
+\begin{frame}{Models are more robust and generalist}
+\begin{columns}
+    \column{0.5\linewidth}
+    \begin{figure}
+        \centering
+        \includegraphics<1>[width=\linewidth]{figs/dinov2_pca.png}
+        \includegraphics<2>[width=\linewidth]{figs/dinov2.png}
+    \end{figure}
+    \column{0.5\linewidth}
+\begin{itemize}
+    \item<1-> Self-supervised Learning (Pre-training)
+    \item<2-> Better performances and robustness
+\end{itemize}
+    
+\end{columns}
+    \nonumbernote{Oquab \textit{et al.} 2024}
+    
+\end{frame}
+
+\begin{frame}{Zero-shot at a cost}
+\begin{figure}
+    \centering
+    \includegraphics[width=.8\linewidth]{figs/no_zero_shot.png}
+\end{figure}
+\nonumbernote{Udandarao \textit{et al.} 2024}
+\end{frame}
+
+
+% \begin{frame}{Not only deep learning}
+    
+% \end{frame}
+
+\begin{frame}{Conclusion}
+
+\begin{itemize}
+    \item Lots of potential
+    \item But lots of traps
+    \item[\large\MVRightarrow{}]<2-> \textbf{Use wisely on the long term}
+\end{itemize}
+
+
+\end{frame}
+
+\begin{frame}[plain]
+    \Huge{Thank you for your attention !}
+    
+    \vfill
+    
+    \LARGE{Any questions?}
+\end{frame}
+
+
+% \appendix
+
+% \begin{frame}{Backup slides go here}
+    
+% \end{frame}
+
+\end{document}
