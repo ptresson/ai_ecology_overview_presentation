@@ -1,6 +1,7 @@
 \documentclass{irdbeamer}
 \usepackage{tikz}
 \usepackage{marvosym}
+\usepackage{amsfonts}
 
 \title{Artificial Intelligence in Ecology and Evolution : \\ potential and limits}
 \subtitle{E2M2 webinar}
@@ -91,9 +92,7 @@
         \only<1>{\caption{Grieshop \textit{et al.} 2012}}
         \only<2>{\caption{xkcd 1425, 2014}}
     \end{figure}
-    
 \end{columns}
-    
 \end{frame}
 
 \section{What are the cases where deep learning does work ? \\ \small{and other models don't}}
@@ -415,18 +414,27 @@ New unknown species in the training test appears in a region.
 \end{frame}
 
 
-% \begin{frame}{Not only deep learning}
+\begin{frame}{Not only deep learning}
     
-% \end{frame}
+\end{frame}
 
 \begin{frame}{Conclusion}
 
-\begin{itemize}
-    \item Lots of potential
-    \item But lots of traps
-    \item[\large\MVRightarrow{}]<2-> \textbf{Use wisely on the long term}
-\end{itemize}
-
+Should I use deep learning in my research ?
+\begin{columns}[t]
+    \column{.5\linewidth}
+    \begin{itemize}
+        \item[\checkmark] Lot of incoming data
+        \item[\checkmark] Low-level data
+        \item[\checkmark] Cumbersome but (relatively) easy to analyse
+    \end{itemize}
+    \column{.5\linewidth}
+    \begin{itemize}
+        \item[$\times$] Need for explainability
+        \item[$\times$] \textbf{Need for certainty}
+        \item[$\times$] \textbf{Need for reliability}
+    \end{itemize}
+\end{columns}
 
 \end{frame}
 
@@ -439,7 +447,35 @@ New unknown species in the training test appears in a region.
 \end{frame}
 
 
-% \appendix
+\appendix
+
+\begin{frame}{Useful ressources}
+\begin{columns}[t]
+    \column{.5\linewidth}
+    \textbf{State of the art}
+    \begin{itemize}
+        \item \href{https://huggingface.co/}{Huggingface}
+        \item \href{https://paperswithcode.com/sota}{PapersWithCode}
+    \end{itemize}
+    \textbf{Getting started}
+    \begin{itemize}
+        \item \href{https://docs.pytorch.org/tutorials/}{Pytorch}
+        \item \href{https://keras.io/getting_started/}{Keras}
+    \end{itemize}
+    \column{.5\linewidth}
+    \textbf{Understanding papers}
+    \begin{itemize}
+        \item \href{https://www.youtube.com/@YannicKilcher}{Yannic Kilcher}
+        \item \href{https://www.youtube.com/@AICoffeeBreak}{AI coffe break}
+    \end{itemize}
+    \textbf{Understanding visually}
+    \begin{itemize}
+        \item \href{https://www.youtube.com/@3blue1brown}{3blue1brown}
+        \item \href{https://www.youtube.com/@Deepia-ls2fo}{deepia}
+    \end{itemize}
+\end{columns}
+
+\end{frame}
 
 % \begin{frame}{Backup slides go here}
     
