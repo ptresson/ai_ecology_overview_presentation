@@ -83,6 +83,7 @@
     \item[\large\MVRightarrow{}]<2-> \textbf{Automation now possible}
 \end{itemize}
     \column{0.5\linewidth}
+        \only<2>{\vspace{-.8cm}}
     \begin{figure}
         \centering
         \includegraphics<1>[width=0.8\linewidth]{figs/grieshop_et_al.png}
@@ -144,6 +145,28 @@
     \includegraphics<6>[width=.3\textwidth]{./figs/recapcha_pheidole.png}%
 \end{frame}
 
+\begin{frame}
+    \centering
+    \large \textbf{Overfitting}
+\end{frame}
+
+\begin{frame}{Overfitting}
+    \begin{figure}
+        \begin{center}
+            \includegraphics[width=\textwidth]{./figs/overfitting-overview.png}
+            % \caption{\tiny \cite{goodfellow2016deep}}
+        \end{center}
+    \end{figure}
+\end{frame}
+
+\begin{frame}{Overfitting}
+    \begin{figure}
+        \begin{center}
+            \includegraphics[width=0.7\textwidth]{./figs/goodfellow.png}
+            \caption{\tiny \cite{goodfellow2016deep}}
+        \end{center}
+    \end{figure}
+\end{frame}
 
 \begin{frame}{}
     \centering
@@ -155,9 +178,121 @@
     \only<1>{Train set}%
     \only<2>{\small A good fitted model}%
     \only<3>{Test set}%
-    \only<4>{\footnotesize An overfitted model}%
+    \only<4>{\footnotesize Overfitting}%
 \end{frame}
 
+\begin{frame}
+    \centering
+    \large \textbf{Biases}
+\end{frame}
+
+\begin{frame}{Biases in the train set}
+    \begin{columns}
+        \begin{column}{.5\linewidth}
+            \centering
+    \includegraphics<1-2>[width=.9\textwidth]{./figs/monstera-plantnet.png}%
+    \includegraphics<3>[width=.5\textwidth]{./figs/monstera-wild.jpg}%
+        \end{column}
+        \begin{column}{.5\linewidth}
+            \centering
+    \includegraphics<1>[width=.8\textwidth]{./figs/schemas/train.png}%
+    \includegraphics<2>[width=.8\textwidth]{./figs/schemas/good_fit.png}%
+    \includegraphics<3>[width=.8\textwidth]{./figs/schemas/bad_test.png}%
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{Biases in the train set - autocorrelation}
+    \begin{columns}
+        \begin{column}{.5\linewidth}
+            \centering
+    \includegraphics<1>[width=.8\textwidth]{./figs/camera_trap_frames.png}%
+    \includegraphics<2>[width=.8\textwidth]{./figs/camera_trap_frames1.png}%
+    \includegraphics<3>[width=.8\textwidth]{./figs/camera_trap_frames2.png}%
+    \includegraphics<4>[width=.8\textwidth]{./figs/camera_trap_craw.JPG}%
+    \includegraphics<5>[width=.8\textwidth]{./figs/camera_trap_cubs.png}%
+        \end{column}
+        \begin{column}{.5\linewidth}
+            \centering
+    \includegraphics<2>[width=.8\textwidth]{./figs/schemas/train.png}%
+    \includegraphics<3>[width=.8\textwidth]{./figs/schemas/autocorr_test.png}%
+    \includegraphics<4->[width=.8\textwidth]{./figs/schemas/autocorr.png}%
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{Biases in the train set - Spatial autocorrelation}
+    \begin{columns}
+        \begin{column}{.5\linewidth}
+            \centering
+    \includegraphics<1-3>[width=.5\textwidth]{./figs/spatial/2022.png}%
+    \includegraphics<4>[width=.5\textwidth]{./figs/spatial/2022_pleiades.png}%
+        \end{column}
+        \begin{column}{.5\linewidth}
+            \centering
+    \includegraphics<2>[width=.5\textwidth]{./figs/spatial/vit_dino_4cl.png}%
+    \includegraphics<3->[width=.5\textwidth]{./figs/spatial/resnet_dino.png}%
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}
+    \centering
+    \large \textbf{Unbalanced data}
+\end{frame}
+
+\begin{frame}{Unbalanced data}
+            \centering
+    \includegraphics<1>[width=.4\textwidth]{./figs/schemas/unbalanced.png}%
+    \includegraphics<2>[width=.4\textwidth]{./figs/schemas/unb_tight.png}%
+    \includegraphics<3>[width=.4\textwidth]{./figs/schemas/unb_tight_test_unb.png}%
+    \includegraphics<4>[width=.4\textwidth]{./figs/schemas/test_unb_bad.png}%
+\end{frame}
+
+\begin{frame}{Deal with unbalanced data}
+    \begin{columns}
+        \begin{column}{.5\linewidth}
+            \begin{itemize}
+                \item<1-> Oversample ?
+                \item<4-> Undersample/saturate ?
+                \item<7-> Adapt loss ?
+            \end{itemize}
+        \end{column}
+        \begin{column}{.5\linewidth}
+            \centering
+    \includegraphics<1>[width=.8\textwidth]{./figs/schemas/oversampled.png}%
+    \includegraphics<2>[width=.8\textwidth]{./figs/schemas/oversampled_fit.png}%
+    \includegraphics<3>[width=.8\textwidth]{./figs/schemas/fp.png}%
+    \includegraphics<4>[width=.8\textwidth]{./figs/schemas/undersample.png}%
+    \includegraphics<5>[width=.8\textwidth]{./figs/schemas/undersample_fit.png}%
+    \includegraphics<6>[width=.8\textwidth]{./figs/schemas/fn.png}%
+    \includegraphics<7>[width=.8\textwidth]{./figs/schemas/adapt_loss.png}%
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{Deal with lack of data}
+    \begin{columns}
+        \begin{column}{.5\linewidth}
+            \begin{itemize}
+                \item<1-> Data augmentation
+                \item<3-> Pretrained model
+                \item<4> \textbf{... collect more data}
+            \end{itemize}
+        \end{column}
+        \begin{column}{.5\linewidth}
+            \centering
+    \includegraphics<1>[width=.8\textwidth]{./figs/schemas/train.png}%
+    \includegraphics<2>[width=.8\textwidth]{./figs/schemas/data_aug.png}%
+    \includegraphics<3>[width=.8\textwidth]{./figs/schemas/pretrained.png}%
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}
+    \centering
+    \large \textbf{Out of distribution}
+\end{frame}
 
 \begin{frame}{Out of distribution : Evolution with time}
 \begin{columns}
@@ -197,7 +332,60 @@ New unknown species in the training test appears in a region.
     
 \end{frame}
 
-\section{How will it evolve ?}
+\begin{frame}{}
+    \centering
+    \textbf{Need to be very careful on how to evaluate}
+\end{frame}
+
+\section{How to sample and evaluate ?}
+
+\begin{frame}{Random split ?}
+    \begin{center}
+    \textcolor{black}{"random split training validation 80/20"}
+    \end{center}
+    \pause
+        \centering
+        \vspace{-0.5cm}
+            \fbox{\includegraphics[width=.7\paperwidth,]{./figs/random_sampling.png}}
+
+            \cite{oquab2023dinov2}
+    \pause
+
+    Works for huge DL papers, maybe not for you
+\end{frame}
+
+\begin{frame}{Overfitting the test set}
+    \centering
+    \includegraphics<1>[width=.5\textwidth]{./figs/schemas/lucky_test.png}%
+    \includegraphics<2>[width=.5\textwidth]{./figs/schemas/overfit_test1.png}%
+    \includegraphics<3>[width=.5\textwidth]{./figs/schemas/overfit_test2.png}%
+    \includegraphics<4>[width=.5\textwidth]{./figs/schemas/overfit_test3.png}%
+    \includegraphics<5>[width=.5\textwidth]{./figs/schemas/overfit_test4.png}%
+    \includegraphics<6>[width=.5\textwidth]{./figs/schemas/overfit_test5.png}%
+\end{frame}
+
+\begin{frame}{Cross-validation}
+    \centering
+    \includegraphics[width=.5\textwidth]{./figs/cross_validation.png}
+    \nonumbernote{\tiny Figure from scikit-learn docs}
+\end{frame}
+
+\begin{frame}{Cross-validation}
+    \centering
+    \includegraphics<1>[width=.7\textwidth]{./figs/kfold.png}%
+    \includegraphics<2>[width=.7\textwidth]{./figs/stratified_kfold.png}%
+    \nonumbernote{\tiny Figure from scikit-learn docs}
+\end{frame}
+
+\begin{frame}{Spatial cross-validation}
+    \centering
+    \includegraphics<1>[width=.5\textwidth]{./figs/spatial/ploton2020.png}%
+    \includegraphics<2>[width=.5\textwidth]{./figs/spatial/ploton2020-result.png}%
+    
+    \tiny See. \cite{ploton2020spatial}
+\end{frame}
+
+\section{Perspectives}
 
 \begin{frame}{Models are more robust and generalist}
 \begin{columns}
