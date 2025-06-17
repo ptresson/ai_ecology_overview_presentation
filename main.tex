@@ -1,3 +1,7 @@
+%%% compiles with
+%% latexmk  -auxdir=aux/ main.tex
+%%% compress with
+%% gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/prepress -dNOPAUSE -dQUIET -dBATCH -sOutputFile=compressed_PDF_file.pdf input_PDF_file.pdf
 \documentclass{irdbeamer}
 \usepackage{tikz}
 \usepackage{marvosym}
@@ -46,8 +50,18 @@
 \maketitle
 
 \usebackgroundtemplate{}
-\cutoc{}
 
+\begin{frame}{Disclaimer}
+    \vspace{-1cm}
+    \centering
+    AI is not only deep learning
+    \begin{figure}
+            \includegraphics[width=0.4\textwidth]{./figs/goodfellow_AI.png}
+        \caption{\tiny \cite{goodfellow2016deep}}
+    \end{figure}
+\end{frame}
+
+\cutoc{}
 
 \section{Why use deep learning in ecology ?}
 
@@ -89,7 +103,7 @@
         \centering
         \includegraphics<1>[width=0.8\linewidth]{figs/grieshop_et_al.png}
         \includegraphics<2>[width=0.5\linewidth]{./figs/xkcd_photo_is_a_bird.png}
-        \only<1>{\caption{Grieshop \textit{et al.} 2012}}
+        \only<1>{\caption{\small \cite{grieshop2012big}}}
         \only<2>{\caption{xkcd 1425, 2014}}
     \end{figure}
 \end{columns}
@@ -126,7 +140,7 @@
 \end{frame}
 
 \section{What are the cases where deep learning doesn't work ?\\
-\small{Common traps when working with living things}}
+\small{common traps when working with living things}}
 
 \begin{frame}[t]{Contraints in ecology}
     \only<1->{Data from the real world is noisy,}%
@@ -306,7 +320,7 @@
     \includegraphics<2>[width=\linewidth]{figs/vela_et_al_graph.png}
 \end{figure}
 \end{columns}
-\nonumbernote{\tiny{Adapted from Vela \textit{et al.} 2022}}
+    \nonumbernote{\tiny{Adapted from \cite{vela2022temporal}}}
 \end{frame}
 
 \begin{frame}{Out of distribution : Global changes}
@@ -384,6 +398,21 @@ New unknown species in the training test appears in a region.
     \tiny See. \cite{ploton2020spatial}
 \end{frame}
 
+\begin{frame}{Choosing the right metric}
+\begin{columns}
+    \column{.5\linewidth}
+    \centering
+    \includegraphics[width=.8\textwidth]{./figs/schemas/AP_vs_Accuracy.png}%
+    \column{.5\linewidth}
+    \only<2>{\textbf{If we predict Sp.~1 all the time:}
+            \begin{tabular}{lcc}
+                Accuracy & = & 0.75 \\
+                Average precision & = & 0.05 \\
+            \end{tabular}
+            }
+\end{columns}
+\end{frame}
+
 \section{Perspectives}
 
 \begin{frame}{Models are more robust and generalist}
@@ -401,7 +430,7 @@ New unknown species in the training test appears in a region.
 \end{itemize}
     
 \end{columns}
-    \nonumbernote{Oquab \textit{et al.} 2024}
+    \nonumbernote{\small \cite{oquab2023dinov2}}
     
 \end{frame}
 
@@ -410,7 +439,7 @@ New unknown species in the training test appears in a region.
     \centering
     \includegraphics[width=.8\linewidth]{figs/no_zero_shot.png}
 \end{figure}
-\nonumbernote{Udandarao \textit{et al.} 2024}
+    \nonumbernote{\small \cite{udandarao2024no}}
 \end{frame}
 
 
@@ -485,6 +514,11 @@ Should I use deep learning in my research ?
     \end{itemize}
 \end{columns}
 
+\end{frame}
+
+\begin{frame}[allowframebreaks]{References}
+\setbeamertemplate{bibliography item}{}
+    {\footnotesize \printbibliography[heading=none]}
 \end{frame}
 
 % \begin{frame}{Backup slides go here}
